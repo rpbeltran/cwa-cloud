@@ -10,8 +10,8 @@
   </head>
 
   <body>
-    <%= google_sign_in_button proceed_to: create_login_url do %>
-  Sign in with my <%= image_tag('google_logo.png', alt: 'Google') %> account
+    <%= google_sign_in_button proceed_to: '/' do %>
+  Sign in with my Google %> account
 <% end %>
     <%= yield %>
   </body>
