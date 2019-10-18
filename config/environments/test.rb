@@ -46,5 +46,12 @@ Rails.application.configure do
   # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true
   
+  # Heroku
+  config.hosts << "cwa-cloud.herokuapp.com"
+  
+  # Emily's C9
   config.hosts << "f3988caa5fe54cc7a5e707fadd3a8368.vfs.cloud9.us-east-2.amazonaws.com"
+  
+  # Ryan's C9
+  config.hosts << "60b82c4eea5042ef938fb4467bd9ccd4.vfs.cloud9.us-east-2.amazonaws.com"
 end
