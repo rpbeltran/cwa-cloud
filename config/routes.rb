@@ -3,4 +3,7 @@ Rails.application.routes.draw do
   #root 'story#new'
   get 'story/new'
   root 'story#new'
+  
+  get 'login', to: 'logins#new'
+  get 'login/create', to: 'logins#create', as: :create_login
 end
