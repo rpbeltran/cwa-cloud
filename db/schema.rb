@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_17_180938) do
+ActiveRecord::Schema.define(version: 2019_10_18_074256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,10 +19,15 @@ ActiveRecord::Schema.define(version: 2019_10_17_180938) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
-  
+
   create_table "users", force: :cascade do |t|
-    t.string "google_token"
-    t.string "google_refresh_token"
+    t.string "name"
+    t.string "email_address"
+    t.string "user_id"
+    t.string "avatar_url"
+    t.string "locale"
+    t.string "given_name"
+    t.string "last_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
