@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   get 'story/new'
   root 'story#new'
   
-  get 'login', to: 'logins#new'
+  get 'login', to: 'logins#receive'
   get 'login/create', to: 'logins#create', as: :create_login
 end
