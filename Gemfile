@@ -25,6 +25,8 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'google_sign_in'
 
+gem 'simplecov', '~> 0.12.0'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
