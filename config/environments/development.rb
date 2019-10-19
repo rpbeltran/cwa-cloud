@@ -75,5 +75,6 @@ Rails.application.configure do
   
   class Application < Rails::Application
     config.web_console.whitelisted_ips = '165.91.12.18'
+    config.web_console.whitelisted_ips = '128.194.3.176'
   end
 end
