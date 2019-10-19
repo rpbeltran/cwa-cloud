@@ -1,7 +1,7 @@
 class StoryController < ApplicationController
     
     def story_params
-        params.permit(:author, :storyName)
+        params.permit(:title, :firstname, :lastname, :genre, :file)
     end
     
     def new
