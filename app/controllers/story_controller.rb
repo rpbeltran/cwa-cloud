@@ -14,9 +14,13 @@ class StoryController < ApplicationController
 
     def create
         # attempt to create a story, validate if we can
-        if story_params then
+        begin
             @story = Story.create(story_params)
+        rescue
+            puts "Improper Params"
         end
+        
+        redirect_to story_new_path
     end
     
 end
