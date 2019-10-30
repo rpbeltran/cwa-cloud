@@ -18,19 +18,19 @@ class StoryController < ApplicationController
         # logic to help debug form submit error
         # convert these into notices eventually
         
-        if params[:title] == "" then
+        if params[:title].to_s.strip.empty? then
            puts 'Missing Require Field: Title'
            redirect_to story_new_path
            return
-        elsif params[:firstname] == "" then
+        elsif params[:firstname].to_s.strip.empty? then
            puts 'Missing Require Field: First Name'
            redirect_to story_new_path
            return
-        elsif params[:lastname] == "" then
+        elsif params[:lastname].to_s.strip.empty? then
            puts 'Missing Require Field: Last Name'
            redirect_to story_new_path
            return
-        elsif params[:file] == "" then
+        elsif params[:file].to_s.strip.empty? then
            puts 'Missing Require Field: File'
            redirect_to story_new_path
            return
