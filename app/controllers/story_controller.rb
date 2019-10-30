@@ -1,7 +1,7 @@
 class StoryController < ApplicationController
     
     def story_params
-        params.require(:title).require(:firstname).requrie(:lastname).require(:file).permit(:genre)
+        params.require([:title, :firstname, :lastname, :file]).permit(:genre)
     end
     
     def index
@@ -9,17 +9,20 @@ class StoryController < ApplicationController
     end
 
     def new
-        # nothing to do yet
+        puts 'Entered the New Method'
     end
 
     def create
-        # attempt to create a story, validate if we can
-        begin
-            @story = Story.create(story_params)
-        rescue
-            puts "Improper Params"
-        end
+        puts 'Entered the Create Method'
         
+        begin
+            @story = Story.create!(story_params)
+        rescue => error
+            # refine this to all for better feedback on the missing / wrong params
+            puts 'Missing One or More Required Params'
+            puts error
+        end
+        # go back to the new view
         redirect_to story_new_path
     end
     
