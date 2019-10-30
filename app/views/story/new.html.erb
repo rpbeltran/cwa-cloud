@@ -1,5 +1,5 @@
 <h2>Upload New Story</h2>
-<form>
+<%= form_tag(story_create_path) do %>
     <input type="file" name="file"><br>
     <p></p>
     Title: <input type="text" name="title"><br>
@@ -12,5 +12,5 @@
     <p></p>
     Genre: <input type="text" name="genre"><br>
     <p></p>
-    <%= link_to '<button type="button">Submit</button>'.html_safe, story_create_path%>
-</form>
+    <%=submit_tag 'Submit', :class => 'btn btn-primary'%>
+<% end %>
