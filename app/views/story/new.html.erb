@@ -10,12 +10,8 @@
         Last name: <input type="text" name="lastname"><br>
     </formset>
     <p></p>
-    Genre: <input type="text" name="genre"><br>
+    Add Tag: <input type="text" name="tag">
+    <%=submit_tag 'Add Tag'%>
     <p></p>
-    <%=submit_tag 'Submit', :class => 'btn btn-primary'%>
-<% end %>
-
-<%= form_tag(tag_create_path) do %>
-    Tag: <input type="test" name="tag">
-    <%=submit_tag 'Submit', :class => 'btn btn-primary'%>
+    <%=submit_tag 'Submit Story'%>
 <% end %>
