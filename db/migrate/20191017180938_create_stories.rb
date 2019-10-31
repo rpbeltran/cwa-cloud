@@ -6,7 +6,7 @@ class CreateStories < ActiveRecord::Migration[6.0]
       t.string :lastname
       t.string :genre
       t.string :file
-      t.string :tags, array: true, default: []
+      t.text :tags, array: true, default: []
       
       t.timestamps
     end

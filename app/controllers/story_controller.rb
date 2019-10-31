@@ -5,21 +5,28 @@ class StoryController < ApplicationController
     end
     
     def index
-        @story = story.all
+        
     end
 
     def new
         puts 'Entered the New Method'
+        
     end
 
     def create
         puts 'Entered the Create Method'
         
         if params[:commit] == "Add Tag" then
-            puts "Adding a Tag"
-        elsif params[:commit] == "Submit Story" then
-            puts "Submitting a Story"
+            if session[:session_tags] == nil then
+                session[:session_tags] = Array.new(0, "A")
+                session[:session_tags].push(params[:tag])
+            else
+                session[:session_tags].push(params[:tag])
+                puts session[:session_tags][0]
+                session.clear
+            end
         end
+        
         
         # logic to help debug form submit error
         # convert these into notices eventually
