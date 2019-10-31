@@ -1,6 +1,9 @@
 class LoginsController < ApplicationController
   
-  
+  def sum arr    
+    return arr.sum
+  end
+    
   def receive
       if id_token = flash[:google_sign_in_token]
         identity = GoogleSignIn::Identity.new(id_token)
