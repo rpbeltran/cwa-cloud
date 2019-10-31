@@ -14,3 +14,8 @@
     <p></p>
     <%=submit_tag 'Submit', :class => 'btn btn-primary'%>
 <% end %>
+
+<%= form_tag(tag_create_path) do %>
+    Tag: <input type="test" name="tag">
+    <%=submit_tag 'Submit', :class => 'btn btn-primary'%>
+<% end %>

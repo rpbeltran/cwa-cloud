@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   post 'story/create', to: 'story#create', as: :story_create
   root 'story#new'
   
+  post 'tag/create', to: 'story#index', as: :tag_create
+  
   get 'login', to: 'logins#receive'
   get 'login/create', to: 'logins#create', as: :create_login
 end
