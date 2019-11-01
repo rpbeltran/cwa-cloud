@@ -16,12 +16,6 @@ ActiveRecord::Schema.define(version: 2019_10_31_220016) do
   enable_extension "plpgsql"
 
   create_table "stories", force: :cascade do |t|
-    t.string "title"
-    t.string "firstname"
-    t.string "lastname"
-    t.string "genre"
-    t.string "file"
-
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
