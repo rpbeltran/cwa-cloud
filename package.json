@@ -6,6 +6,11 @@
     "@rails/activestorage": "^6.0.0-alpha",
     "@rails/ujs": "^6.0.0-alpha",
     "@rails/webpacker": "^4.0.7",
+    "bootstrap": "^4.3.1",
+    "chosen": "^0.0.2",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.16.0",
+    "tether": "^1.4.7",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
