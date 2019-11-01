@@ -1,8 +1,10 @@
 class LoginsController < ApplicationController
-  
-  
-  def receive
+  #example function I''m using while trying to get rspec to work
+  def sum arr    
+    return arr.sum
+  end
     
+  def receive
       if id_token = flash[:google_sign_in_token]
         identity = GoogleSignIn::Identity.new(id_token)
         user = User.find_by user_id: identity.user_id

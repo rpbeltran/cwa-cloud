@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2019_10_31_220016) do
     t.string "lastname"
     t.string "genre"
     t.string "file"
+
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
