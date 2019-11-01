@@ -1,9 +1,5 @@
 class StoryController < ApplicationController
     
-    def story_params
-        params.require([:title, :firstname, :lastname, :file]).permit(:genre, :tag_list, :tag, { tag_ids: [] }, :tag_ids)
-    end
-    
     def index
         params[:tag] ? @stories = Story.tagged_with(params[:tag]) : @stories = Story.all
     end
@@ -19,11 +15,13 @@ class StoryController < ApplicationController
     def create
         
         @story = Story.new(story_params)
-        if @story.save
-            redirect_to @story
-        else
-            render :new
-        end
+        puts 'Successfully Made New Story'
+        redirect_to story_new_path
+        # if @story.save
+        #     redirect_to @story
+        # else
+        #     render :new
+        # end
         
         
         
@@ -67,5 +65,15 @@ class StoryController < ApplicationController
         # go back to the new view
         # redirect_to story_new_path
     end
+    
+    private
+    
+        def story_params
+            params.require(:title)
+            params.require(:firstname)
+            params.require(:lastname)
+            params.require(:file)
+            params.permit(:title, :firstname, :lastname, :file, :genre, :tag_list, :tag, { tag_ids: [] }, :tag_ids)
+        end
     
 end
