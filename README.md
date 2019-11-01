@@ -25,4 +25,11 @@
     - rake cucumber
 6) To run rspec
     - rspec
+    
+## Writing new rspec tests 
+Each controller has it's own rspec file, found in cwa-cloud/spec
+Good crash course on rspec: https://semaphoreci.com/community/tutorials/getting-started-with-rspec
+
+## Writing new cucumber tests
+Frankly I'm confused about how cucumber works, here's an article: http://railscasts.com/episodes/155-beginning-with-cucumber
 
