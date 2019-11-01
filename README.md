@@ -33,3 +33,6 @@ Good crash course on rspec: https://semaphoreci.com/community/tutorials/getting-
 ## Writing new cucumber tests
 Frankly I'm confused about how cucumber works, here's an article: http://railscasts.com/episodes/155-beginning-with-cucumber
 
+Here is an additional resource; I haven't fully finished reading it yet, but it seems a bit more helpful: https://www.guru99.com/introduction-to-cucumber.html
+
+- You can skip the installation steps 1 - 4, but 5 - 10 show you how to setup cucumber tests 
