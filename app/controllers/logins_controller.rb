@@ -1,5 +1,5 @@
 class LoginsController < ApplicationController
-  
+  #example function I''m using while trying to get rspec to work
   def sum arr    
     return arr.sum
   end

@@ -1,5 +1,7 @@
 require_relative './rails_helper.rb'
-Dir["../app/controllers/*.rb"].each {|file| require file }
+#Dir["../app/controllers/*.rb"].each {|file| require file }
+require_relative '../app/controllers/story_controller'
+
 
 describe 'Story Controller' do
     describe '#index' do

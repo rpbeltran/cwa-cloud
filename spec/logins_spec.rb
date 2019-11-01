@@ -3,7 +3,9 @@ require_relative '../app/controllers/logins_controller'
 
 #Dir["../app/controllers/*.rb"].each {|file| require file }
 
-describe 'logins_controller' do
+#describe 'LoginsController' do
+#the following is an example test that I've been trying to get working
+RSpec.describe LoginsController, :type => :controller do
     describe '#sum' do 
       it 'should be defined' do
         expect { sum([1, 3, 4]) }.not_to raise_error
@@ -21,10 +23,10 @@ describe 'logins_controller' do
         expect(sum([])).to be_zero
       end
     end
-    describe '#receive' do
-      it 'should be defined' do
-        #expect { receive(test) }.not_to raise_error
-        expect(receive).to respond_to(:receive) 
-      end
-    end
+   # describe '#receive' do
+   #   it 'should be defined' do
+   #     #expect { receive(test) }.not_to raise_error
+   #     expect(receive).to respond_to(:receive) 
+   #   end
+   # end
 end
