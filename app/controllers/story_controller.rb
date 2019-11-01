@@ -1,31 +1,42 @@
 class StoryController < ApplicationController
     
     def story_params
-        params.require([:title, :firstname, :lastname, :file]).permit(:genre)
+        params.require([:title, :firstname, :lastname, :file]).permit(:genre, :tag_list, :tag, { tag_ids: [] }, :tag_ids)
     end
     
     def index
-        
+        params[:tag] ? @stories = Story.tagged_with(params[:tag]) : @stories = Story.all
+    end
+    
+    def show
+        @story = Story.find(params[:id])
     end
 
     def new
-        puts 'Entered the New Method'
-        
+        @story = Story.new
     end
 
     def create
-        puts 'Entered the Create Method'
         
-        if params[:commit] == "Add Tag" then
-            if session[:session_tags] == nil then
-                session[:session_tags] = Array.new(0, "A")
-                session[:session_tags].push(params[:tag])
-            else
-                session[:session_tags].push(params[:tag])
-                puts session[:session_tags][0]
-                session.clear
-            end
+        @story = Story.new(story_params)
+        if @story.save
+            redirect_to @story
+        else
+            render :new
         end
+        
+        
+        
+        # if params[:commit] == "Add Tag" then
+        #     if session[:session_tags] == nil then
+        #         session[:session_tags] = Array.new(0, "A")
+        #         session[:session_tags].push(params[:tag])
+        #     else
+        #         session[:session_tags].push(params[:tag])
+        #         puts session[:session_tags][0]
+        #         session.clear
+        #     end
+        # end
         
         
         # logic to help debug form submit error
@@ -54,7 +65,7 @@ class StoryController < ApplicationController
         #puts 'Successfully Made New Story'
         
         # go back to the new view
-        redirect_to story_new_path
+        # redirect_to story_new_path
     end
     
 end

@@ -1,17 +1,32 @@
-<h2>Upload New Story</h2>
-<%= form_tag(story_create_path) do %>
-    <input type="file" name="file"><br>
-    <p></p>
-    Title: <input type="text" name="title"><br>
-    <p></p>
-    <formset>
-        <legend>Author</legend>
-        First name: <input type="text" name="firstname"><br>
-        Last name: <input type="text" name="lastname"><br>
-    </formset>
-    <p></p>
-    Add Tag: <input type="text" name="tag">
-    <%=submit_tag 'Add Tag'%>
-    <p></p>
-    <%=submit_tag 'Submit Story'%>
-<% end %>
+<!--<h2>Upload New Story</h2>-->
+<!--<%#= form_tag(story_create_path) do %>-->
+<!--    <input type="file" name="file"><br>-->
+<!--    <p></p>-->
+<!--    Title: <input type="text" name="title"><br>-->
+<!--    <p></p>-->
+<!--    <formset>-->
+<!--        <legend>Author</legend>-->
+<!--        First name: <input type="text" name="firstname"><br>-->
+<!--        Last name: <input type="text" name="lastname"><br>-->
+<!--    </formset>-->
+<!--    <p></p>-->
+<!--    Add Tag: <input type="text" name="tag">-->
+<!--    <%#=submit_tag 'Add Tag'%>-->
+<!--    <p></p>-->
+<!--    <%#=submit_tag 'Submit Story'%>-->
+<!--<%# end %>-->
+
+<div class = 'col-md-8 offset-2'>
+  <h1 class = "text-center">Upload Story</h1>
+  <form id='demo-form' enctype="multipart/form-data">
+    <%= simple_form_for @story, url: story_create_path do |f| %>
+    <input type='file' name='file' />
+    <%= f.input :title %>
+    <%= f.input :firstname %> <%= f.input :lastname %>
+    <%= f.input :genre %>
+    <%= f.input :tag_ids, as: :select, collection: Tag.order(:name), label_method: :name, input_html: {class: 'chosen-select', multiple: true} %>
+    <%= f.submit "Upload", class: 'btn btn-lg btn-primary float-right' %>
+  <% end %>
+  </form>
+  
+</div>

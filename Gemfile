@@ -24,8 +24,16 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 
 gem 'google_sign_in'
-
 gem 'simplecov', '~> 0.12.0'
+gem 'jquery-rails'
+gem 'popper_js'
+gem 'bootstrap-sass'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether'
+  gem 'rails-assets-chosen'
+  gem 'rails-assets-chosen-bootstrap'
+end
+gem 'simple_form'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

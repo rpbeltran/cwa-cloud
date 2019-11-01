@@ -2,6 +2,8 @@
 require 'simplecov'
 SimpleCov.start
 require 'spec_helper'
+require 'chosen-rails/rpsec'
+#https://github.com/tsechingho/chosen-rails
 ENV['RAILS_ENV'] ||= 'test'
 
 require File.expand_path('../config/environment', __dir__)

@@ -1,0 +1,10 @@
+<h1>Stories</h1>
+<div class = "col-md-8 offset 2">
+    <% @stories.each do |story| %>
+    <h2><%= story.title %></h2>
+    <h3><%= story.firstname %> <% story.lastname %></h3>
+    <p>Genre: <%= story.genre %></p>
+    <p><small>Tags: <%= raw story.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></small</p>
+    <p><%= link_to "Read Story", story_path(story) %></p>
+  <% end %>
+</div>
