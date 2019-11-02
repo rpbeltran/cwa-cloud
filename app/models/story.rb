@@ -1,4 +1,5 @@
 class Story < ApplicationRecord
+    validates_presence_of :title, :firstname, :lastname, :file
     #serialize :tags, Array
     
     has_many :taggings
