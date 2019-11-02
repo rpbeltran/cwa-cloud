@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   post 'story/create', to: 'story#create', as: :story_create
   root 'story#new'
  
+  get 'admin', to: 'administer#main'
+  get 'admin/new', to: 'administer#new'
+  
   get 'rules', to: 'rules#main'
   get 'rules/new', to: 'rules#new'
   

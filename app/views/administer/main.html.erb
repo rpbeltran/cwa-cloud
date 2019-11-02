@@ -1,0 +1,28 @@
+<h2>Users</h2>
+<br>
+Admin count = <%= @admin_count %>
+<br>
+
+<% if @vis %>
+
+    <div> 
+        
+        <% @users.each do |user| %>
+            <% if user.admin %>
+                <%= user.name %> : <%= user.email_address %> : Administrator
+            <% else %>
+                <%= user.name %> : <%= user.email_address %> : <form action= "admin/new"> <input type="hidden" name="sel_id" value="<%= user.user_id %>" /> <input type="submit" value="Make Admin"> </form>
+            <% end %>
+            <br>
+            <br>
+        <%end %> 
+    </div>
+    
+    <br>
+    <br>
+
+<% else %>
+
+    Sorry, this page is just for admins...
+    
+<% end %>

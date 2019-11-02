@@ -1,7 +1,7 @@
-class RulesController < ApplicationController
+class AdministerController < ApplicationController
     
-    def rule_params
-        params.require(:value)
+    def countAdmins
+        User.where(:admin => true).count
     end
     
     def isAdmin
@@ -21,16 +21,19 @@ class RulesController < ApplicationController
     end
 
     def main
-        @rules = Rule.all
+        @users = User.all
         @admin = isAdmin
         @username = username
-    end
+        @admin_count = countAdmins
+        puts @admin_count.class
+        @vis = isAdmin || @admin_count == 0
+    end    
     
     def new
-        
-        if isAdmin
-            Rule.create({ :value => params[:value] })
-            redirect_to "/rules/"
+        if isAdmin || countAdmins == 0
+            User.where(:user_id => params[:sel_id]).update_all(:admin => true)
+            redirect_to "/admin"
         end
     end
+    
 end
