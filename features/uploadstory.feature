@@ -4,13 +4,15 @@ Feature: UploadStory
   
   Scenario: upload a story
     
-    Given I have a file
+    Given I am on the upload story page
     
-    And I have a filename
+    When I select a file
     
-    And I have a first name
+    When I have a filename
     
-    And I have a last name
+    When I have a first name
+    
+    When I have a last name
     
     When I click submit
     
