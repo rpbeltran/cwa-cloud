@@ -22,6 +22,27 @@ ActiveRecord::Schema.define(version: 2019_11_02_013156) do
   end
 
   create_table "stories", force: :cascade do |t|
+    t.string "title"
+    t.string "firstname"
+    t.string "lastname"
+    t.string "genre"
+    t.string "file"
+
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "taggings", force: :cascade do |t|
+    t.bigint "tag_id", null: false
+    t.bigint "story_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["story_id"], name: "index_taggings_on_story_id"
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -39,4 +60,6 @@ ActiveRecord::Schema.define(version: 2019_11_02_013156) do
     t.boolean "admin", default: false
   end
 
+  add_foreign_key "taggings", "stories"
+  add_foreign_key "taggings", "tags"
 end
