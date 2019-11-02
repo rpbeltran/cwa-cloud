@@ -9,10 +9,15 @@
 
 <br>
 <br>
-<div>
-    New Rule:
-    <form action="/rules/new">
-        <input type="text" value="" name="value">
-        <input type="submit" value="Enact new rule">
-    </form>
-</div>
+
+<% if @admin %>
+  
+    <div>
+        New Rule:
+        <form action="/rules/new">
+            <input type="text" value="" name="value">
+            <input type="submit" value="Enact new rule">
+        </form>
+    </div>
+
+<% end %>
