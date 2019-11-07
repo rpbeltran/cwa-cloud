@@ -30,8 +30,6 @@ gem 'popper_js'
 gem 'bootstrap-sass'
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether'
-  gem 'rails-assets-chosen'
-  gem 'rails-assets-chosen-bootstrap'
 end
 gem 'simple_form'
 
@@ -65,6 +63,7 @@ group :test do
   gem 'cucumber-rails', require: false
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
+  gem 'watir'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -1596,11 +1596,6 @@ chokidar@^2.0.2, chokidar@^2.1.8:
   optionalDependencies:
     fsevents "^1.2.7"
 
-chosen@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/chosen/-/chosen-0.0.2.tgz#217701668ffb3bc26f1d80a4cf0300db2ad66794"
-  integrity sha1-IXcBZo/7O8JvHYCkzwMA2yrWZ5Q=
-
 chownr@^1.1.1:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/chownr/-/chownr-1.1.3.tgz#42d837d5239688d55f303003a508230fa6727142"

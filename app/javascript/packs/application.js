@@ -10,7 +10,6 @@ require("channels")
 require('jquery')
 require('popper.js')
 require('tether')
-require('chosen')
 
 //= require jquery
 //= require jquery_ujs
@@ -19,7 +18,6 @@ require('chosen')
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
-//= require chosen
 
 
 
