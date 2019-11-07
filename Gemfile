@@ -30,8 +30,6 @@ gem 'popper_js'
 gem 'bootstrap-sass'
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether'
-  gem 'rails-assets-chosen'
-  gem 'rails-assets-chosen-bootstrap'
 end
 gem 'simple_form'
 
