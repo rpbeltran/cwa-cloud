@@ -10,6 +10,7 @@ require("channels")
 require('jquery')
 require('popper.js')
 require('tether')
+require('bootstrap-sprockets')
 
 //= require jquery
 //= require jquery_ujs
