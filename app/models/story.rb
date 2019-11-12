@@ -1,9 +1,10 @@
 class Story < ApplicationRecord
-    validates_presence_of :title, :firstname, :lastname, :file
+    validates_presence_of :title, :firstname, :lastname
     #serialize :tags, Array
     
     has_many :taggings
     has_many :tags, through: :taggings
+    has_one_attached :file
     
     def self.tagged_with(name)
         Tag.find_by!(name: name).stories
