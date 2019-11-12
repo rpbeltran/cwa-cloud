@@ -10,11 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_11_12_192109) do
+=======
+ActiveRecord::Schema.define(version: 2019_11_02_013156) do
+>>>>>>> 84d68c6b383ddaa1f6468775a6ca979b596d3c27
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+<<<<<<< HEAD
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -35,6 +40,14 @@ ActiveRecord::Schema.define(version: 2019_11_12_192109) do
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
+=======
+  create_table "rules", force: :cascade do |t|
+    t.string "value"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+>>>>>>> 84d68c6b383ddaa1f6468775a6ca979b596d3c27
 
   create_table "stories", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -66,6 +79,7 @@ ActiveRecord::Schema.define(version: 2019_11_12_192109) do
     t.string "last_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "admin", default: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

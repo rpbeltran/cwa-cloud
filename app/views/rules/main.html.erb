@@ -1,0 +1,23 @@
+<h2>The rules are:</h2>
+
+<div> 
+    <% @rules.each do |rule| %>
+       <%= rule.value %> <br>
+    <%end %> 
+</div>
+
+
+<br>
+<br>
+
+<% if @admin %>
+  
+    <div>
+        New Rule:
+        <form action="/rules/new">
+            <input type="text" value="" name="value">
+            <input type="submit" value="Enact new rule">
+        </form>
+    </div>
+
+<% end %>

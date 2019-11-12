@@ -36,3 +36,5 @@ Frankly I'm confused about how cucumber works, here's an article: http://railsca
 Here is an additional resource; I haven't fully finished reading it yet, but it seems a bit more helpful: https://www.guru99.com/introduction-to-cucumber.html
 
 - You can skip the installation steps 1 - 4, but 5 - 10 show you how to setup cucumber tests 
+- Run this command to install a headless chrome binary: 
+    curl https://intoli.com/install-google-chrome.sh | bash

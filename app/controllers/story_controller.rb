@@ -13,7 +13,6 @@ class StoryController < ApplicationController
     end
 
     def create
-        
         @story = Story.new(story_params)
         puts 'Successfully Made New Story'
         redirect_to story_new_path
