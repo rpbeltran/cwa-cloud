@@ -21,8 +21,12 @@ ActiveRecord::Schema.define(version: 2019_11_02_013156) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-
   create_table "stories", force: :cascade do |t|
+    t.string "title"
+    t.string "firstname"
+    t.string "lastname"
+    t.string "genre"
+    t.string "file"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
