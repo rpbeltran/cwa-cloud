@@ -27,8 +27,8 @@ gem 'google_sign_in'
 gem 'simplecov', '~> 0.12.0'
 gem 'jquery-rails'
 gem 'popper_js'
-gem 'bootstrap-sass'
 gem 'docx'
+gem 'bootstrap'
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether'
 end
