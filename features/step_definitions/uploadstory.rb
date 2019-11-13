@@ -1,13 +1,14 @@
 require 'watir'
 
 # having issues getting watir working on c9...mostly related to needing a chrome binary
-#browser = Watir::Browser.new
+args = %w[headless disable-gpu disable-dev-shm-usage disable-software-rasterizer no-sandbox]
+browser = Watir::Browser.new :chrome, args: args
 
 Given (/^I am on the upload story page$/) do
     
     # this is temporary since we haven't deployed this to heroku...replace this with
     # an actual page address eventually
-    #browser.goto "https://e724577f316a4043aaa23e80f54588fa.vfs.cloud9.us-east-2.amazonaws.com/"
+    browser.goto "https://e724577f316a4043aaa23e80f54588fa.vfs.cloud9.us-east-2.amazonaws.com/"
 end
 
 When (/^I select a file$/) do
@@ -18,7 +19,7 @@ When (/^I select a file$/) do
 end
 
 When (/^I have a filename$/) do
-    #browser.text_field(:name, "title").set("MyFirstStory")
+    browser.text_field(name: "title").set("MyFirstStory")
 end
 
 When (/^I have a first name$/) do
