@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'home', to: 'home#main'
   
   resources :stories
+  get 'story', to: 'story#index', as: :story_index
   get 'story/new', to: 'story#new', as: :story_new
   post 'story/create', to: 'story#create', as: :story_create
  
