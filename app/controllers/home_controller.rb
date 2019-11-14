@@ -10,7 +10,7 @@ class HomeController < ApplicationController
     def new
         
         if isAdmin
-            Announcement.create({ :value => params[:value] })
+            Announcement.create({ :body => params[:value] })
             redirect_to "/home/"
         end
     end
