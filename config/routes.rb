@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'home#main'
  
   get 'home', to: 'home#main'
+  get 'home/new', to: 'home#new'
   
   resources :stories
   get 'story/new', to: 'story#new', as: :story_new
