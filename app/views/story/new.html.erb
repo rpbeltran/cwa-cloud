@@ -1,6 +1,6 @@
 <div class = 'col-md-8 offset-2'>
   <h1 class = "text-center">Upload Story</h1>
-  <%=form_tag(story_create_path) do %>
+  <%=form_tag(story_create_path, multipart: true) do %>
     <%#= simple_form_for @story, url: story_create_path do |f| %>
     <div class="form-group">
       <input type='file' name='file' id='file' class="form-control-file" required/>

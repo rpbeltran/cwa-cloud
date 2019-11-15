@@ -353,7 +353,7 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   docx
-  google-cloud-storage (~> 1.8)
+  google-cloud-storage (~> 1.11)
   google_sign_in
   jbuilder (~> 2.7)
   jquery-rails

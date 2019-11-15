@@ -18,8 +18,15 @@
       <a class="nav-link" href="/admin">Admin</a>
       <a class="nav-link" href="/rules">Rules</a>
       <%= google_sign_in_button proceed_to: '/login' do %>
-        Sign in with my Google account
+        <%if @is_logged%>
+          <%= @logged_user%>
+        <% else %>
+          Sign in with Google
+        <% end %>
       <% end %>
+      
+      
+      
     </nav>
     <%= yield %>
     

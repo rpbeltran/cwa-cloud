@@ -17,15 +17,14 @@ local:
 # Remember not to checkin your GCS keyfile to a repository
 google:
   service: GCS
-  project: cwa-cloud-dev-repository
+  project: cwa-cloud-dev-repository 
   credentials: <%= ENV['GOOGLE_APPLICATION_CREDENTIALS'].as_json %>
-  bucket: cwa-cloud_dev_bucket 
-
+  bucket: cwa-cloud_dev_bucket
 google_dev:
   service: GCS
-  project: cwa-cloud-dev-repository
+  project: cwa-cloud-dev-repository 
   credentials: <%= Rails.root.join("config/secrets/CWA-Cloud.json") %>
-  bucket: cwa-cloud_dev_bucket 
+  bucket: cwa-cloud_dev_bucket
 
 # Use rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
 # microsoft:
