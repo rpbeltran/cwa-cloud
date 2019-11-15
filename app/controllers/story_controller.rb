@@ -17,7 +17,8 @@ class StoryController < ApplicationController
             @story = Story.create(story_params_no_file)
             puts 'Successfully Made New Story'
         else
-            @story = Story.create(story_params_file).file.attach(nil)
+            @story = Story.create(story_params_file)
+            @story.file.attach(params[:file])
         end
         redirect_to story_new_path
     end

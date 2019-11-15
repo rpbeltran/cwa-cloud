@@ -53,7 +53,6 @@ ActiveRecord::Schema.define(version: 2019_11_14_190350) do
     t.string "firstname"
     t.string "lastname"
     t.string "genre"
-    t.string "file"
     t.text "tags", default: [], array: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -87,7 +86,6 @@ ActiveRecord::Schema.define(version: 2019_11_14_190350) do
     t.boolean "admin", default: false
   end
 
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "taggings", "stories"
   add_foreign_key "taggings", "tags"
 end
