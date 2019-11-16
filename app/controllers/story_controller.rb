@@ -1,7 +1,17 @@
 class StoryController < ApplicationController
     
     def index
-        #params[:tag] ? @stories = Story.tagged_with(params[:tag]) : @stories = Story.all
+        if params.key?(:tag)
+            @stories = query_by_tag(params[:tag])
+        elsif params.key?(:author)
+            @stories = query_by_author(params[:author])
+        elsif params.key?(:title)
+            @stories = query_by_title(params[:title])        
+        elsif params.key?(:genre)
+            @stories = query_by_genre(params[:genre])
+        else 
+            @stories = Story.all
+        end
     end
     
     def show
@@ -38,6 +48,27 @@ class StoryController < ApplicationController
             params.require(:firstname)
             params.require(:lastname)
             params.permit(:title, :firstname, :lastname, :genre, :tag_list, :tag, { tag_ids: [] }, :tag_ids)
+        end
+        
+        def query_by_tag(name)
+            Story.where("'" +name+"' = ANY (tags)")
+        end
+        
+        def query_by_title(name)
+            Story.where("title LIKE '%" + name + "%'")
+        end            
+        
+        def query_by_genre(name)
+            Story.where("genre LIKE '%" + name + "%'")
+        end    
+        
+        def query_by_author(name)
+            names = name.split(" ")
+            if names.length == 1
+                Story.where("firstname LIKE '%"+name+"%'" ).or( Story.where("lastname LIKE '%"+name+"%'" ) )
+            else
+                Story.where("firstname LIKE '%"+names[0]+"%'" ).where("lastname LIKE '%"+names[1]+"%'" )
+            end
         end
     
 end

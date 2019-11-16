@@ -6,10 +6,6 @@ class Story < ApplicationRecord
     has_many :tags, through: :taggings
     has_one_attached :file
     
-    def self.tagged_with(name)
-        Tag.find_by!(name: name).stories
-    end
-    
     def self.tag_counts
         Tag.select('tags.*, count(taggings.tag_id) as count').joins(:taggings).group('taggings.tag_id')
     end
