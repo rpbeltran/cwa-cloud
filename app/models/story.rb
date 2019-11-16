@@ -6,8 +6,17 @@ class Story < ApplicationRecord
     has_many :tags, through: :taggings
     has_one_attached :file
     
-    def self.tagged_with(name)
-        Tag.find_by!(name: name).stories
+
+    
+   
+    
+    def self.multiquery( tag, title, author )
+        names = name.split(" ")
+        if names.length == 1
+            Story.where(firstname: name).or( Story.where(lastname: name) )
+        else
+            Story.where(firstname: names[0], lastname: names[1])
+        end
     end
     
     def self.tag_counts

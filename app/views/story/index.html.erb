@@ -1,4 +1,25 @@
 <h1>Stories</h1>
+
+<form action="/story/">
+    <input type="text" value="" name="title">
+    <input type="submit" value="Search by Title">
+</form>
+<form action="/story/">
+    <input type="text" value="" name="author">
+    <input type="submit" value="Search by Author">
+</form>
+<form action="/story/">
+    <input type="text" value="" name="genre">
+    <input type="submit" value="Search by Genre">
+</form>
+<form action="/story/">
+    <input type="text" value="" name="tags">
+    <input type="submit" value="Search by Tag">
+</form>
+<form action="/story/">
+    <input type="submit" value="Clear Searches">
+</form>
+
 <div class = "col-md-8 offset 2">
     <table>
     <tr>
@@ -11,10 +32,10 @@
     <% @stories.each do |story| %>
         <tr>
             <td><%= story.title %></td>
-            <td><%= story.firstname %> <% story.lastname %></td>
+            <td><%= story.firstname %> <%= story.lastname %></td>
             <td><%= story.genre %></td>
             <td><%= raw story.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></td>
-            <td><%= link_to '<button type="button">Read Story</button>'.html_safe, story_path(story) %></td>
+            <td><%= link_to "Read Story", story_path(story) %></td>
         </tr>
     <% end %>
     </table>
