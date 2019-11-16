@@ -1,7 +1,7 @@
 class StoryController < ApplicationController
     
     def index
-        #params[:tag] ? @stories = Story.tagged_with(params[:tag]) : @stories = Story.all
+        params[:tag] ? @stories = Story.tagged_with(params[:tag]) : @stories = Story.all
     end
     
     def show
