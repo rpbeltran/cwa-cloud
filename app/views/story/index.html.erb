@@ -42,7 +42,7 @@
             <td><%= story.firstname %> <%= story.lastname %></td>
             <td><%= story.genre %></td>
             <td><%= raw story.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></td>
-            <td><%= link_to '<button type="button">Read</button>'.html_safe, story_path(story) %></td>
+            <td><%= link_to '<button type="button">Read</button>'.html_safe, story_show_path(story) %></td>
         </tr>
     <% end %>
     </table>

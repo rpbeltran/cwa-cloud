@@ -4,3 +4,4 @@
   <p><%=@story.genre%></p>
   <p><small>Tags: <%= raw @story.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></small</p>
 </div>
+
