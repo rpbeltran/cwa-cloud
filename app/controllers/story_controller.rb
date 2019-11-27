@@ -16,7 +16,6 @@ class StoryController < ApplicationController
     
     def show
         @story = Story.find(params[:id])
-        #redirect_to story_show_path
     end
 
     def new
