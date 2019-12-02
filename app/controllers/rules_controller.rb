@@ -14,7 +14,7 @@ class RulesController < ApplicationController
         end
     end
     
-    
+
     def update
         if isAdmin
             Rule.delete_all

@@ -1,7 +1,4 @@
 class HomeController < ApplicationController
-    def rule_params
-        params.require(:value)
-    end
 
     def main
         @announcements = Announcement.all
