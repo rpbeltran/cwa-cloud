@@ -1,47 +1,57 @@
 <div class = 'col-md-8 offset-2'>
   <h1 class = "text-center">Upload Story</h1>
-  <%=form_tag(story_create_path) do %>
-    <%#= simple_form_for @story, url: story_create_path do |f| %>
-    <div class="form-group">
-      <input type='file' name='file' id='file' class="form-control-file" required/>
-    </div>
     
-    <div class="form-group">
-      <label for="title">Title</label>
-      <input type="text" name="title" id='title' class="form-control" required>
-    </div>
-    
-    <label>Author</label>
-    <div class="row">
-      <div class="col">
-        <input type="text" name="firstname" id='firstname' class="form-control" placeholder="First name" required>
+  <%if @is_approved %>
+    <%=form_tag(story_create_path, multipart: true) do %>
+      <%#= simple_form_for @story, url: story_create_path do |f| %>
+      <div class="form-group">
+        <input type='file' name='file' id='file' class="form-control-file" required/>
       </div>
-      <div class="col">
-        <input type="text" name="lastname" id='lastname' class="form-control" placeholder="Last name" required>
+      
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" name="title" id='title' class="form-control" required>
       </div>
-    </div></br>
-    
-    <div class="form-group">
-      <label for="genre">Genre</label>
-      <input type="text" name="genre" id='genre' class="form-control">
+      
+      <label>Author</label>
+      <div class="row">
+        <div class="col">
+          <input type="text" name="firstname" id='firstname' class="form-control" placeholder="First name" required>
+        </div>
+        <div class="col">
+          <input type="text" name="lastname" id='lastname' class="form-control" placeholder="Last name" required>
+        </div>
+      </div></br>
+      
+      <div class="form-group">
+        <label for="genre">Genre</label>
+        <input type="text" name="genre" id='genre' class="form-control">
+      </div>
+      
+      <div class="form-group">
+        <label>Tags</label>
+        <%= select_tag "Tags", options_from_collection_for_select(Tag.all, "name", "name"), { multiple: true, class: "custom-select"} %>
+        <small id="tag_help" class="form-text text-muted">Hold the Ctrl/command key and click to select multiple.</small>
+      </div>
+      
+      <div>
+        <%=submit_tag 'Upload Story', class: "btn btn-primary"%>
+      </div>
+      
+        <%#= f.input :title, error: 'Title required' %>
+        <%#= f.input :firstname, label: 'Author first name', error: 'Author required' %> 
+        <%#= f.input :lastname, label: 'Author last name', error: 'Author required' %>
+        <%#= f.input :genre %>
+        <%#= f.input :tag_ids, label: 'Tags', hint: 'Hold Ctrl/command key and click to select multiple', as: :select, collection: Tag.order(:name), label_method: :name, input_html: {class: 'chosen-select', multiple: true} %>
+        <%#= f.button :submit, label: "Upload", class: 'btn btn-lg btn-primary float-right' %>
+        <%# end %>
+      
+    <% end %>
+  <% else %>
+    <div class="text-center">
+      Your account is currently in a restricted status, please contact a CWA admin for approval to post new stories
     </div>
-    
-    <div class="form-group">
-      <label>Tags</label>
-      <%= select_tag "Tags", options_from_collection_for_select(Tag.all, "name", "name"), { multiple: true, class: "custom-select"} %>
-      <small id="tag_help" class="form-text text-muted">Hold the Ctrl/command key and click to select multiple.</small>
-    </div>
-    
-    <div>
-      <%=submit_tag 'Upload Story', class: "btn btn-primary"%>
-    </div>
-      <%#= f.input :title, error: 'Title required' %>
-      <%#= f.input :firstname, label: 'Author first name', error: 'Author required' %> 
-      <%#= f.input :lastname, label: 'Author last name', error: 'Author required' %>
-      <%#= f.input :genre %>
-      <%#= f.input :tag_ids, label: 'Tags', hint: 'Hold Ctrl/command key and click to select multiple', as: :select, collection: Tag.order(:name), label_method: :name, input_html: {class: 'chosen-select', multiple: true} %>
-      <%#= f.button :submit, label: "Upload", class: 'btn btn-lg btn-primary float-right' %>
-    <%# end %>
   <% end %>
+  
   
 </div>

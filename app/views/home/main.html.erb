@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+  .home {
+    font: 20px Montserrat, sans-serif;
+    line-height: 1.8;
+    color: #f5f6f7;
+  }
+  p {font-size: 16px;}
+  .margin {margin-bottom: 45px;}
+  .bg-1 { 
+    background-color: #5A5A5A; 
+    color: #ffffff;
+  }
+  .container-fluid {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+  </style>
+</head>
+<body>
+
+<div class="container-fluid bg-1 text-center">
+  <h1 class="margin"><b>Creative Writers of Aggieland</b></h1>
+  <body class="home">
+        <div> 
+            Recent Announcements:
+            <% @announcements.each do |announcement| %>
+               <%= announcement.body %> <br>
+            <%end %> 
+        </div>
+        
+        
+        <br>
+        <br>
+        
+        <% if @logged_admin %>
+          
+            <div>
+                New Announcement:
+                <form action="/home/new">
+                    <input type="text" value="" name="value">
+                    <input type="submit" value="Post announcement">
+                </form>
+            </div>
+        
+        <% end %>
+        
+        <br>
+        
+        <iframe src="https://docs.google.com/document/d/e/2PACX-1vT-iYN_1CBWkVTCqjpEvD9msx6lzSGcOlrPMRRmDyTXm1BEZV2eaFOgk9q76eSc1APwU223beq7SmE5/pub?embedded=true" width = 700px height = 1500px></iframe>
+
+  </body>
+</div>
+
