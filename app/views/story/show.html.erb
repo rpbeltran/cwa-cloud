@@ -3,4 +3,6 @@
   <h2><%=@story.firstname%> <%=@story.lastname%></h2>
   <p><%=@story.genre%></p>
   <p><small>Tags: <%= raw @story.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></small</p>
+  <br>
+  <iframe src="<%= url_for(@story.file) %>"  width = 700px height = 1000px> </iframe>
 </div>
