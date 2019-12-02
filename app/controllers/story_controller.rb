@@ -23,12 +23,17 @@ class StoryController < ApplicationController
     end
 
     def create
-        if (params[:file] == String) then
-            @story = Story.create(story_params_no_file)
-            puts 'Successfully Made New Story'
-        else
-            @story = Story.create(story_params_file)
-            @story.file.attach(params[:file])
+        
+        if isApproved
+            
+            if (params[:file] == String) then
+                @story = Story.create(story_params_no_file)
+                puts 'Successfully Made New Story'
+            else
+                @story = Story.create(story_params_file)
+                @story.file.attach(params[:file])
+            end
+            
         end
         redirect_to story_new_path
     end

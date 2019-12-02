@@ -2,6 +2,10 @@ class AdministerController < ApplicationController
     
     def countAdmins
         User.where(:admin => true).count
+    end    
+    
+    def approvalQueue
+        User.where(:approved => [nil, false])
     end
     
     def access
@@ -9,16 +13,38 @@ class AdministerController < ApplicationController
     end
     
     def main
-        @users = User.all
+        @users = User.where(:approved => true)
         @admin_count = countAdmins
         @access = access
+        @approval_queue = approvalQueue
     end
     
-    def new
+    def approve
+        if access
+            User.where(:user_id => params[:sel_id]).update_all(:approved => true)
+            redirect_to "/admin"
+        end
+    end    
+    
+    def restrict
+        if access
+            User.where(:user_id => params[:sel_id]).update_all(:approved => false)
+            redirect_to "/admin"
+        end
+    end
+    
+    def make_admin
         if access
             User.where(:user_id => params[:sel_id]).update_all(:admin => true)
             redirect_to "/admin"
         end
     end
+    
+    def revoke_admin
+        if access
+            User.where(:user_id => params[:sel_id]).update_all(:admin => false)
+            redirect_to "/admin"
+        end
+    end   
     
 end

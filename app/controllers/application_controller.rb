@@ -4,6 +4,14 @@ class ApplicationController < ActionController::Base
     
     def isLogged
         return cookies.key?(:user_id)
+    end    
+    
+    def isApproved
+        if isLogged
+            user = User.find_by user_id: cookies.signed[:user_id]
+            return user.approved
+        end
+        return false
     end
         
     def isAdmin
@@ -25,6 +33,7 @@ class ApplicationController < ActionController::Base
     before_action :initialize_logged_user
     def initialize_logged_user
         @is_logged    = isLogged
+        @is_approved  = isApproved
         @logged_user  = username
         @logged_admin = isAdmin
     end
