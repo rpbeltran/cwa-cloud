@@ -11,7 +11,10 @@ Rails.application.routes.draw do
   post 'story/create', to: 'story#create', as: :story_create
  
   get 'admin', to: 'administer#main'
-  get 'admin/new', to: 'administer#new'
+  get 'admin/restrict', to: 'administer#restrict'
+  get 'admin/approve', to: 'administer#approve'
+  get 'admin/make_admin', to: 'administer#make_admin'
+  get 'admin/revoke_admin', to: 'administer#revoke_admin'
   
   get 'rules', to: 'rules#main'
   get 'rules/new', to: 'rules#new'
