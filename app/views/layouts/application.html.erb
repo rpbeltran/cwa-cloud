@@ -18,13 +18,26 @@
       <a class="nav-link" href="/story/new">Upload</a>
       <a class="nav-link" href="/admin">Admin</a>
       <a class="nav-link" href="/rules">Rules</a>
-      <%= google_sign_in_button proceed_to: '/login' do %>
+      
+      <div style="margin-left:auto; display:inline-block">
+          
         <%if @is_logged%>
-          <%= @logged_user%>
-        <% else %>
-          Sign in with Google
+          <div style="display:inline-block">
+            Hello <%= @logged_user%>!
+          </div>
         <% end %>
-      <% end %>
+        
+        <div style="display:inline-block; margin-left:12px; margin-right:10px">
+          <%if @is_logged%>
+            <%= button_to 'Sign out', '/login/out', method: :get %>
+          <% else %>
+            <%= google_sign_in_button proceed_to: '/login' do %>
+              Sign In
+            <% end %>
+          <% end %>
+        </div>
+      
+      </div>
       
       
       

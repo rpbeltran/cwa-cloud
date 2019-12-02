@@ -2,22 +2,24 @@
 
 <div> 
     <% @rules.each do |rule| %>
-       <%= rule.value %> <br>
+       <%= rule.value %> 
+       <br>
     <%end %> 
 </div>
 
 
-<br>
-<br>
-
 <% if @logged_admin %>
   
-    <div>
-        New Rule:
-        <form action="/rules/new">
-            <input type="text" value="" name="value">
-            <input type="submit" value="Enact new rule">
-        </form>
-    </div>
+    <br><br>
+    
+    <b>Update Rules</b>
+    
+    <br><br>
+    
+    <form action="/rules/update">
+          <%= text_area_tag("value", @rules_text, size: '50x10') %>
+          <br>
+        <input type="submit" value="Perform Update">
+    </form>
 
 <% end %>
