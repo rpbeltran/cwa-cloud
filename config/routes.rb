@@ -17,10 +17,12 @@ Rails.application.routes.draw do
   get 'admin/revoke_admin', to: 'administer#revoke_admin'
   
   get 'rules', to: 'rules#main'
-  get 'rules/new', to: 'rules#new'
+  get 'rules/update', to: 'rules#update'
   
   #get 'tags/:tag', to: 'posts#index', as: :tag
   
   get 'login', to: 'logins#receive'
   get 'login/create', to: 'logins#create', as: :create_login
+  get 'login/out', to: 'logins#logout'
+  
 end
