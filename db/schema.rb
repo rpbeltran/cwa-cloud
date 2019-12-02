@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_12_210048) do
+ActiveRecord::Schema.define(version: 2019_11_14_190350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,12 @@ ActiveRecord::Schema.define(version: 2019_11_12_210048) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "announcements", force: :cascade do |t|
+    t.string "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "rules", force: :cascade do |t|
     t.string "value"
     t.datetime "created_at", precision: 6, null: false
@@ -47,14 +53,9 @@ ActiveRecord::Schema.define(version: 2019_11_12_210048) do
     t.string "firstname"
     t.string "lastname"
     t.string "genre"
-    t.string "file"
+    t.text "tags", default: [], array: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "title"
-    t.string "firstname"
-    t.string "lastname"
-    t.string "genre"
-    t.string "file"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -85,7 +86,6 @@ ActiveRecord::Schema.define(version: 2019_11_12_210048) do
     t.boolean "admin", default: false
   end
 
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "taggings", "stories"
   add_foreign_key "taggings", "tags"
 end

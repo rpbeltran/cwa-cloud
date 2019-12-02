@@ -1,10 +1,49 @@
 <h1>Stories</h1>
+<br>
+<form action="/story/" style="display:inline-block">
+    <input type="text" value="" name="title">
+    <input type="submit" value="Search by Title">
+</form>
+<br>
+<form action="/story/" style="margin: 0; padding: 0; display:inline-block">
+    <input type="text" value="" name="author">
+    <input type="submit" value="Search by Author">
+</form>
+<br>
+<form action="/story/" style="margin: 0; padding: 0; display:inline-block">
+    <input type="text" value="" name="genre">
+    <input type="submit" value="Search by Genre">
+</form>
+<br>
+<form action="/story/" style="margin: 0; padding: 0; display:inline-block">
+    <input type="text" value="" name="tags">
+    <input type="submit" value="Search by Tag">
+</form>
+<br>
+<form action="/story/" style="margin: 0; padding: 0; display:inline-block">
+    <input type="submit" value="Clear Searches">
+</form>
+
+<br>
+<br>
+
 <div class = "col-md-8 offset 2">
+    <table>
+    <tr>
+        <th> Title </th>
+        <th> Author </th>
+        <th> Genre </th>
+        <th> Tag </th>
+        <th> Link </th>
+    </tr>
     <% @stories.each do |story| %>
-    <h2><%= story.title %></h2>
-    <h3><%= story.firstname %> <% story.lastname %></h3>
-    <p>Genre: <%= story.genre %></p>
-    <p><small>Tags: <%= raw story.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></small</p>
-    <p><%= link_to "Read Story", story_path(story) %></p>
-  <% end %>
+        <tr>
+            <td><%= story.title %></td>
+            <td><%= story.firstname %> <%= story.lastname %></td>
+            <td><%= story.genre %></td>
+            <td><%= raw story.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></td>
+            <td><%= link_to '<button type="button">Read</button>'.html_safe, story_show_path(story) %></td>
+        </tr>
+    <% end %>
+    </table>
 </div>

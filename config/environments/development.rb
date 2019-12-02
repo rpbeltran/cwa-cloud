@@ -29,7 +29,7 @@ Rails.application.configure do
   end
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
+  config.active_storage.service = :google_dev
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
@@ -75,8 +75,12 @@ Rails.application.configure do
   
   # Patrick's C9
   config.hosts << "562acb0a5abc4a9fa770b036eda6313d.vfs.cloud9.us-east-2.amazonaws.com"
+  
+  # Reuben's C9
+  config.hosts << "88851611cb004167a086836793bb5164.vfs.cloud9.us-east-1.amazonaws.com"
   class Application < Rails::Application
     config.web_console.whitelisted_ips = '165.91.12.18'
     config.web_console.whitelisted_ips = '128.194.3.176'
+    config.web_console.whitelisted_ips = '165.91.12.136'
   end
 end

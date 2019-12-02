@@ -35,6 +35,11 @@ class LoginsController < ApplicationController
       redirect_to "/", alert: 'authentication_failed'
     end
   end
+  
+  def logout
+    cookies.delete(:user_id)
+    redirect_to "/"
+  end
 
   private
     def authenticate_with_google
