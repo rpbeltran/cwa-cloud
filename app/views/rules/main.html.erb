@@ -1,25 +1,44 @@
-<h2>The rules are:</h2>
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    body {
+        font: Montserrat, sans-serif;
+        line-height: 1.8;
+     }
+</style>
+</head>
 
-<div> 
-    <% @rules.each do |rule| %>
-       <%= rule.value %> 
-       <br>
-    <%end %> 
-</div>
-
-
-<% if @logged_admin %>
-  
-    <br><br>
+<body>
     
-    <b>Update Rules</b>
+    <div class="col-10 offset-1 container-fluid" style="padding: 10px;">
+        <div class="row">
+            <div class="col text-center">
+                <h1>Creative Writers of Aggieland Website Rules</h1>
+            </div>
+        </div>
+        
+        <div class="text-center" style="padding:10px"> 
+            <% @rules.each do |rule| %>
+                <h5 style="padding: 10px; color:dark-gray;"><%= rule.value %></h5>
+            <%end %> 
+        </div>
+    </div>
     
-    <br><br>
-    
-    <form action="/rules/update">
-          <%= text_area_tag("value", @rules_text, size: '50x10') %>
-          <br>
-        <input type="submit" value="Perform Update">
-    </form>
+    <% if @logged_admin %>
+        
+        <div class="col-10 offset-1 container-fluid" style="padding-top:100px; padding-bottom: 50px">
+            <h3><font size="3">Admin Only: </font>Update Rules</h3>
+            <small class="form-text text-muted">Pressing Enter starts a new rule.</small>
+            
+            <form action="/rules/update">
+                <div class="form-group">
+                    <%= text_area_tag("value", @rules_text, rows: 10, class: "form-control") %>
+                </div>
+                <input class="btn btn-primary" type="submit" value="Update">
+            </form>
+        </div>
+        
+    <% end %>
 
-<% end %>
+</body>

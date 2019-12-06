@@ -1,8 +1,44 @@
-<div class = 'col-md-8 offset-2'>
-  <h1><%=@story.title%></h1>
-  <h2><%=@story.firstname%> <%=@story.lastname%></h2>
-  <p><%=@story.genre%></p>
-  <p><small>Tags: <%= raw @story.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></small</p>
-  <br>
-  <iframe src="<%= url_for(@story.file) %>"  width = 700px height = 1000px> </iframe>
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    body {
+        font: Montserrat, sans-serif;
+        line-height: 1.8;
+     }
+     .embed-responsive-9by11 {
+       padding-bottom: 122.22%;
+     }
+</style>
+</head>
+
+<body>
+  
+<div class="col-10 offset-1 container-fluid" style="padding: 10px; padding-bottom: 50px">
+  <div class="row">
+    <div class="col-auto">
+      <h1><%=@story.title%></h1>
+    </div>
+    <div class="col-auto" style="padding-top:25px">
+      <h3>by <%=@story.firstname%> <%=@story.lastname%></h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-auto">
+      <p><strong>Genre</strong>: <%=@story.genre%></p>
+    </div>
+    <div class="col">
+      <p><strong>Tags</strong>: <%= raw @story.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="embed-responsive embed-responsive-9by11">
+        <iframe class="embed-responsive-item" src="<%= url_for(@story.file) %>"> </iframe>
+      </div>
+    </div>
+  </div>
+  
 </div>
+
+</body>

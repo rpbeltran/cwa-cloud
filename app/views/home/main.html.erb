@@ -2,16 +2,17 @@
 <html lang="en">
 <head>
   <style>
-  .home {
-    font: 20px Montserrat, sans-serif;
+  
+  h4 {
+    font-family: Oswald, sans-serif;
     line-height: 1.8;
-    color: #f5f6f7;
+    color: #500000;
+    font-weight: 300;
   }
   p {font-size: 16px;}
   .margin {margin-bottom: 45px;}
   .bg-1 { 
-    background-color: #5A5A5A; 
-    color: #ffffff;
+    background-color: #FFFFFF;
   }
   .container-fluid {
     padding-top: 70px;
@@ -21,35 +22,72 @@
 </head>
 <body>
 
-<div class="container-fluid bg-1 text-center">
-  <h1 class="margin"><b>Creative Writers of Aggieland</b></h1>
+<div class="container-fluid bg-1 col-10 offset-1">
+  <h1 class="margin text-center" style="font-size:60px">Creative Writers of Aggieland</h1>
   <body class="home">
         <div> 
-            Recent Announcements:
-            <% @announcements.each do |announcement| %>
-               <%= announcement.body %> <br>
-            <%end %> 
+            <h4>Recent Announcements</h3>
+            <div>
+              <% count = 0 %>
+              <% @announcements.reverse_each do |announcement| %>
+                <div class="card">
+                  <div class="card-body">
+                    <p class="card-subtitle text-muted" style="font-size:13px"><%= announcement.created_at.in_time_zone("Central Time (US & Canada)").strftime("%D %I:%M %p") %></p>
+                    <p class="card-text"><%= announcement.body %></p>
+                    <% if @logged_admin %>
+                      <%-#delete announcement%>
+                    <% end %>
+                  </div>
+                </div>
+                
+                <% count = count + 1 %>
+                <% break if count > 2 %>
+              <%end %> 
+            </div>
         </div>
-        
-        
-        <br>
-        <br>
         
         <% if @logged_admin %>
           
-            <div>
-                New Announcement:
-                <form action="/home/new">
-                    <input type="text" value="" name="value">
-                    <input type="submit" value="Post announcement">
-                </form>
+            <div style="padding-top:15px">
+              <h5><font size="2">Admin Only: </font>New Announcement</h5>
+              
+              <form action="/home/new">
+                  <div class="form-group">
+                      <%= text_area_tag("value", "", rows: 3, class: "form-control") %>
+                  </div>
+                  <input class="btn btn-primary" type="submit" value="Post">
+              </form>
             </div>
         
         <% end %>
         
-        <br>
-        
-        <iframe src="https://docs.google.com/document/d/e/2PACX-1vT-iYN_1CBWkVTCqjpEvD9msx6lzSGcOlrPMRRmDyTXm1BEZV2eaFOgk9q76eSc1APwU223beq7SmE5/pub?embedded=true" width = 700px height = 1500px></iframe>
+        <%-# where features stories would go%>
+        <%-# if false used to block comment%>
+        <% if false %>
+          <div style="padding-top: 15px"> 
+              <h4>Featured Stories</h3>
+              <div>
+                <% count = 0 %>
+                <%-# featured stories instead of announcements%>
+                <% @announcements.reverse_each do |announcement| %>
+                  <div class="card">
+                    <div class="card-body">
+                      <p class="card-subtitle text-muted" style="font-size:13px">time?</p>
+                      <h5 class="card-title">Title of Story</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Author</h6>
+                      <p class="card-text">Genre: </p>
+                      <% if @logged_admin %>
+                        <%-#delete feature%>
+                      <% end %>
+                    </div>
+                  </div>
+                  
+                  <% count = count + 1 %>
+                  <% break if count > 2 %>
+                <%end %> 
+              </div>
+          </div>
+        <% end %>
 
   </body>
 </div>
