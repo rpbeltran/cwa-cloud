@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get 'admin/approve', to: 'administer#approve'
   get 'admin/make_admin', to: 'administer#make_admin'
   get 'admin/revoke_admin', to: 'administer#revoke_admin'
+  get 'admin/delete_user', to: 'administer#delete_user'
+  get 'admin/delete_unapproved', to: 'administer#delete_unapproved'
   
   get 'rules', to: 'rules#main'
   get 'rules/update', to: 'rules#update'

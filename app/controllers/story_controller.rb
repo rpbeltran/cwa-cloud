@@ -1,14 +1,14 @@
 class StoryController < ApplicationController
     
     def index
-        if params.key?(:tag)
-            @stories = query_by_tag(params[:tag])
-        elsif params.key?(:author)
-            @stories = query_by_author(params[:author])
-        elsif params.key?(:title)
-            @stories = query_by_title(params[:title])        
-        elsif params.key?(:genre)
-            @stories = query_by_genre(params[:genre])
+        if params[:search_type] == ("tags")
+            @stories = query_by_tag(params[:search_term])
+        elsif params[:search_type] == ("author")
+            @stories = query_by_author(params[:search_term])
+        elsif params[:search_type] == ("title")
+            @stories = query_by_title(params[:search_term])        
+        elsif params[:search_type] == ("genre")
+            @stories = query_by_genre(params[:search_term])
         else 
             @stories = Story.all
         end

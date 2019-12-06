@@ -1,4 +1,17 @@
-<div class = 'col-md-8 offset-2'>
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    body {
+        font: Montserrat, sans-serif;
+        line-height: 1.8;
+     }
+</style>
+</head>
+
+<body>
+
+<div class = "col-8 offset-2 container-fluid" style="padding: 10px">
   <h1 class = "text-center">Upload Story</h1>
     
   <%if @is_approved %>
@@ -48,8 +61,12 @@
       
     <% end %>
   <% else %>
-    Your account is currently in a restricted status, please contact an admin for approval to post new stories
+    <div class="text-center">
+      Your account is currently in a restricted status, please contact a CWA admin for approval to post new stories
+    </div>
   <% end %>
   
   
 </div>
+
+</body>
