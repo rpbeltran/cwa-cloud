@@ -1,48 +1,122 @@
-<h2>Users</h2>
-<br>
-Admin count = <%= @admin_count %>
-<br><br><br>
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    body {
+        font: Montserrat, sans-serif;
+        line-height: 1.8;
+     }
+</style>
+</head>
 
-<% if @access %>
-
-    <h3>
-        Restricted Users:
-    </h3>
-    <br>
-    <div> 
-        <% @approval_queue.each do |user| %>
-            <%= user.name %> : <%= user.email_address %> : <form action= "admin/approve"> <input type="hidden" name="sel_id" value="<%= user.user_id %>" /> <input type="submit" value="Unrestrict Account"> </form>
-            <br>
-            <br>
-        <%end %>
-    </div>
+<div class="container-fluid" style="padding: 10px">
     
-    <br><br>
+    <% if @access %>
+        <div class="row">
+            <div class="col-2 text-center">
+                <h1>Users</h1>
+            </div>
+        </div>
+        
+        <div class="container-fluid" style="padding: 10px 10px">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @approval_queue.each do |user| %>
+                        <tr class="table-warning">
+                            <td><%= user.name %></td>
+                            <td><%= user.email_address %></td>
+                            <td>Restricted User</td>
+                            <td>
+                                <form action= "admin/approve"> 
+                                    <input type="hidden" name="sel_id" value="<%= user.user_id %>" /> 
+                                    <input class="btn btn-outline-secondary btn-sm" type="submit" value="Grant access"> 
+                                </form>
+                                <form action= "admin/delete_unapproved"> 
+                                    <input type="hidden" name="sel_id" value="<%= user.user_id %>" /> 
+                                    <input class="btn btn-outline-danger btn-sm" type="submit" value="Deny access"> 
+                                </form>
+                            </td>
+                        </tr>
+                    <% end %>
+                    
+                    
+                    <% @users.each do |user| %>
+                        <tr>
+                            <td><%= user.name %></td>
+                            <td><%= user.email_address %></td>
+                            <td>
+                                <% if user.admin %>
+                                    Administrator
+                                <% else %>
+                                    User
+                                <% end %>
+                            </td>
+                            <td>
+                                <% if user.admin %>
+                                    <form action= "admin/revoke_admin"> 
+                                        <input type="hidden" name="sel_id" value="<%= user.user_id %>" /> 
+                                        <input class="btn btn-outline-warning btn-sm" type="submit" value="Revoke Admin Rights"> 
+                                    </form>
+                                <% else %>
+                                    <form action= "admin/make_admin"> 
+                                        <input type="hidden" name="sel_id" value="<%= user.user_id %>" /> 
+                                        <input class="btn btn-outline-secondary btn-sm" type="submit" value="Make Admin"> 
+                                    </form>
+                                    <form action= "admin/restrict"> 
+                                        <input type="hidden" name="sel_id" value="<%= user.user_id %>" /> 
+                                        <input class="btn btn-outline-warning btn-sm" type="submit" value="Restrict User"> 
+                                    </form>
+                                    <form action= "admin/delete_user"> 
+                                        <input type="hidden" name="sel_id" value="<%= user.user_id %>" /> 
+                                        <input class="btn btn-outline-danger btn-sm" type="submit" value="Delete User"> 
+                                    </form>
+                                <% end %>
+                            </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+        
+        
+        <!--<div class="container-fluid">-->
+        <!--    <table class="table">-->
+        <!--        <thead>-->
+        <!--            <tr>-->
+        <!--                <th> Title </th>-->
+        <!--                <th> Author </th>-->
+        <!--                <th> Genre </th>-->
+        <!--                <th> Tags </th>-->
+        <!--            </tr>-->
+        <!--        </thead>-->
+        <!--        <tbody>-->
+        <!--            <#% @stories.each do |story| %>-->
+        <!--                <tr>-->
+        <!--                    <td>-->
+        <!--                        <#%= link_to(story_show_path(story), {class: "story-link"}) do %>-->
+        <!--                            <u><#%= story.title %></u>-->
+        <!--                        <#% end %>-->
+        <!--                    </td>-->
+        <!--                    <td><#%= story.firstname %> <#%= story.lastname %></td>-->
+        <!--                    <td><#%= story.genre %></td>-->
+        <!--                    <td><#%= raw story.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></td>-->
+        <!--                </tr>-->
+        <!--            <#% end %>-->
+        <!--        </tbody>-->
+        <!--    </table>-->
+        <!--</div>-->
     
-    <h3>
-        Unrestricted Users:
-    </h3>
-    <br>
-    <div> 
-        <% @users.each do |user| %>
-            <% if user.admin %>
-                <%= user.name %> : <%= user.email_address %> : Administrator :  
-                <form action= "admin/revoke_admin"> <input type="hidden" name="sel_id" value="<%= user.user_id %>" /> <input type="submit" value="Revoke Admin Rights"> </form>
-            <% else %>
-                <%= user.name %> : <%= user.email_address %> : 
-                <form action= "admin/make_admin"> <input type="hidden" name="sel_id" value="<%= user.user_id %>" /> <input type="submit" value="Make Admin"> </form>
-            <% end %>
-            <form action= "admin/restrict"> <input type="hidden" name="sel_id" value="<%= user.user_id %>" /> <input type="submit" value="Restrict User"> </form>
-            <br>
-            <br>
-        <%end %>
-    </div>
+    <% else %>
     
-    <br>
-    <br>
-
-<% else %>
-
-    Sorry, this page is just for admins...
-    
-<% end %>
+        Sorry, this page is just for admins...
+        
+    <% end %>
+</div>

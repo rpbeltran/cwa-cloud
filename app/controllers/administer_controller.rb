@@ -47,4 +47,18 @@ class AdministerController < ApplicationController
         end
     end   
     
+    def delete_user
+        if access
+            User.where(user_id: params[:sel_id]).destroy_all
+        end
+        redirect_to "/admin"
+    end
+    
+    def delete_unapproved
+        if access
+            approvalQueue.where(user_id: params[:sel_id]).destroy_all
+        end
+        redirect_to "/admin"
+    end
+    
 end

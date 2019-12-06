@@ -1,49 +1,82 @@
-<h1>Stories</h1>
-<br>
-<form action="/story/" style="display:inline-block">
-    <input type="text" value="" name="title">
-    <input type="submit" value="Search by Title">
-</form>
-<br>
-<form action="/story/" style="margin: 0; padding: 0; display:inline-block">
-    <input type="text" value="" name="author">
-    <input type="submit" value="Search by Author">
-</form>
-<br>
-<form action="/story/" style="margin: 0; padding: 0; display:inline-block">
-    <input type="text" value="" name="genre">
-    <input type="submit" value="Search by Genre">
-</form>
-<br>
-<form action="/story/" style="margin: 0; padding: 0; display:inline-block">
-    <input type="text" value="" name="tags">
-    <input type="submit" value="Search by Tag">
-</form>
-<br>
-<form action="/story/" style="margin: 0; padding: 0; display:inline-block">
-    <input type="submit" value="Clear Searches">
-</form>
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    .story-link:link {
+        color: black;
+    }
+    .story-link:visited {
+        color: black;
+    }
+    .story-link:hover {
+        color: gray;
+    }
+    body {
+        font: Montserrat, sans-serif;
+        line-height: 1.8;
+     }
+</style>
+</head>
 
-<br>
-<br>
+<body>
+<div class="container-fluid" style="padding: 10px">
+    <div class="row">
+        <div class="col-2 text-center">
+            <h1>Stories</h1>
+        </div>
+        <div class="col-9" style="padding: 7px">
+            <div class="form-group row">
+                <div class="col-10">
+                    <form action="/story/">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <select class="form-control" id="type" name="search_type">
+                                    <option value="title" name="title">title</option>
+                                    <option value="author" name=author>author</option>
+                                    <option value="genre" name="genre">genre</option>
+                                </select>
+                            </div>
+                            <input class="form-control" type="text" name="search_term">
+                            <div class="input-group-append">
+                                <input class="form-control" type="submit" value="Search">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-2">
+                    <form action="/story/" style="display:inline-block">
+                        <input class="form-control" type="submit" value="Clear Searches">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<div class = "col-md-8 offset 2">
-    <table>
-    <tr>
-        <th> Title </th>
-        <th> Author </th>
-        <th> Genre </th>
-        <th> Tag </th>
-        <th> Link </th>
-    </tr>
-    <% @stories.each do |story| %>
-        <tr>
-            <td><%= story.title %></td>
-            <td><%= story.firstname %> <%= story.lastname %></td>
-            <td><%= story.genre %></td>
-            <td><%= raw story.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></td>
-            <td><%= link_to '<button type="button">Read</button>'.html_safe, story_show_path(story) %></td>
-        </tr>
-    <% end %>
+<div class="container-fluid">
+    <table class="table">
+        <thead>
+            <tr>
+                <th> Title </th>
+                <th> Author </th>
+                <th> Genre </th>
+                <th> Tags </th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @stories.each do |story| %>
+                <tr>
+                    <td>
+                        <%= link_to(story_show_path(story), {class: "story-link"}) do %>
+                            <u><%= story.title %></u>
+                        <% end %>
+                    </td>
+                    <td><%= story.firstname %> <%= story.lastname %></td>
+                    <td><%= story.genre %></td>
+                    <td><%= raw story.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></td>
+                </tr>
+            <% end %>
+        </tbody>
     </table>
 </div>
+</body>
