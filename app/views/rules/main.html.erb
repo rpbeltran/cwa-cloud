@@ -11,7 +11,7 @@
 
 <body>
     
-    <div class="col-10 offset-1 container-fluid" style="padding: 10px">
+    <div class="col-10 offset-1 container-fluid" style="padding: 10px;">
         <div class="row">
             <div class="col text-center">
                 <h1>Creative Writers of Aggieland Website Rules</h1>
@@ -27,8 +27,8 @@
     
     <% if @logged_admin %>
         
-        <div class="col-10 offset-1 container-fluid" style="padding-top:100px">
-            <h2><font size="4">Admin Only: </font>Update Rules</h2>
+        <div class="col-10 offset-1 container-fluid" style="padding-top:100px; padding-bottom: 50px">
+            <h3><font size="3">Admin Only: </font>Update Rules</h3>
             <small class="form-text text-muted">Pressing Enter starts a new rule.</small>
             
             <form action="/rules/update">

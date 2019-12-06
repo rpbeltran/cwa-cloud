@@ -7,29 +7,56 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700&display=swap" rel="stylesheet">
+    
+    <style>
+      .nav-link {
+        font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: 18px;
+        color: #FFFFFF;
+      }
+      body {
+        font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        color: #332C2C;
+      }
+      .greeting {
+        display: inline-block;
+        color: #FFFFFF;
+        font-size: 15px;
+      }
+      h1 {
+        font-family: Oswald, sans-serif;
+        line-height: 1.8;
+        color: #500000;
+        font-weight: 500;
+      }
+    </style>
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg" style="font: 18px Montserrat, sans-serif; color: #f5f6f7;">
-      <a class="navbar-brand" href="/">CWA</a>
+    <nav class="navbar navbar-expand-lg">
+      <a class="navbar-brand" href="/" style="font-size:22px">CWA</a>
       
       <a class="nav-link" href="/home">Home</a>
       <a class="nav-link" href="/story">Stories</a>
       <a class="nav-link" href="/story/new">Upload</a>
-      <a class="nav-link" href="/admin">Admin</a>
+      <% if @logged_admin %>
+        <a class="nav-link" href="/admin">Admin</a>
+      <%end%>
       <a class="nav-link" href="/rules">Rules</a>
       
       <div style="margin-left:auto; display:inline-block">
           
         <%if @is_logged%>
-          <div style="display:inline-block">
-            Hello <%= @logged_user%>!
+          <div class="greeting">
+            Hello, <%= @logged_user%>!
           </div>
         <% end %>
         
         <div style="display:inline-block; margin-left:12px; margin-right:10px">
           <%if @is_logged%>
-            <%= button_to 'Sign out', '/login/out', method: :get %>
+            <%= button_to 'Sign out', '/login/out', method: :get, class: "btn btn-light" %>
           <% else %>
             <%= google_sign_in_button proceed_to: '/login' do %>
               Sign In
